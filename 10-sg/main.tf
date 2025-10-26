@@ -3,7 +3,5 @@ module "vote_service_sg" {
 
   name        = "${local.common_name_suffix}-catalogue"
   description = "Security group for catalogue with custom ports open within VPC, egress all trafic"
-  vpc_id      = "vpc-12345678"
-
- 
+  vpc_id      = data.aws_ssm_parameter.vpc_id.value
 }
