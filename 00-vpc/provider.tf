@@ -6,10 +6,11 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "s3-chakra-27"
+    bucket = "remote-state-dev"
     region = "us-east-1"
-    key = "terraform.state"
+    key = "roboshop-dev-vpc"
     use_lockfile = true
+    encrypt = true
   }
 }
 
