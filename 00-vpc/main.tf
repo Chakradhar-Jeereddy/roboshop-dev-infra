@@ -8,5 +8,5 @@ module "vpc" {
     environment = var.environment
     public_cidrs = var.public_cidrs
     private_cidrs = var.private_cidrs
-    database_cidrs = var.database_cidrs
+    database_cidrs = false
 }
