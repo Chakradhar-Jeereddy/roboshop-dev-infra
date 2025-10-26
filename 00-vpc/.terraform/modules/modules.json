@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"vpc","Source":"git::https://github.com/Chakradhar-Jeereddy/IaC.git//roboshop/modules","Dir":".terraform/modules/vpc/roboshop/modules"}]}
