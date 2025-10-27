@@ -12,7 +12,7 @@ module "sg" {
   source = "git::https://github.com/Chakradhar-Jeereddy/roboshop-dev-infra.git//custom-sg"
   project_name = var.project_name
   environment = var.environment
-  vpc_id = local.vpc_id
   sg_name = var.sg_name
   sg_description = var.sg_description
+  vpc_id = local.vpc_id
 }
