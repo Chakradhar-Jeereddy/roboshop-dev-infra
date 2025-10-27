@@ -14,7 +14,3 @@ variable "sg_description" {
     default = "Created for mongodb"
 }
 
-variable "vpc_id" {
-    type = string 
-}
-
