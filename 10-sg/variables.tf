@@ -5,3 +5,15 @@ variable "project_name" {
 variable "environment" {
     default = "dev"
 }
+
+variable "sg_name" {
+    default = "mongodb"
+}
+
+variable "sg_description" {
+    default = "Created for mongodb"
+}
+
+variable "vpc_id" {
+    default = "
+}
