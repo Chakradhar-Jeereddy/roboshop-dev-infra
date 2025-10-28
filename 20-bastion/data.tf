@@ -1,7 +1,18 @@
 data "aws_ami" "ami" {
-  executable_users = ["self"]
+  owners        = ["973714476881"]
+  most_recent  = true
   filter {
-    name   = "image-id"
-    values = ["ami-09c813fb71547fc4f"]
+    name   = "name"
+    values = ["RHEL-9-DevOps-Practice"]
+  }
+
+  filter {
+    name   = "Virtualization"
+    values = ["hvm"]
+  }
+
+  filter {
+    name   = "Root device type"
+    values = ["ebs"]
   }
 }
