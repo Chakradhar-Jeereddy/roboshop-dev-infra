@@ -1,7 +1,7 @@
 resource "aws_instance" "terraform" {
     ami = local.ami_id
     instance_type = "t3.micro"
-    vpc_security_group_ids = [local.bastion_sg_id]
+    vpc_security_group_ids = [local.bastion_sg_id.value]
     tags = merge(
        local.common_tags,
        {
