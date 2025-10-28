@@ -9,10 +9,11 @@
 } */
 
 module "sg" {
+  count = length(var.sg_name)
   source = "git::https://github.com/Chakradhar-Jeereddy/roboshop-dev-infra.git//custom-sg"
   project_name = var.project_name
   environment = var.environment
-  sg_name = var.sg_name
+  sg_name = var.sg_name[count.index]
   sg_description = var.sg_description
   vpc_id = data.aws_ssm_parameter.vpc_id.value
 }

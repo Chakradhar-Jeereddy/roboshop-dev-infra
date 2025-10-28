@@ -7,7 +7,7 @@ variable "environment" {
 }
 
 variable "sg_name" {
-    default = "mongodb"
+    default = ["mongodb","redis","mysql","rabitmq"]
 }
 
 variable "sg_description" {
