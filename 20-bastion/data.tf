@@ -7,7 +7,7 @@ data "aws_ami" "ami" {
   }
 
    filter {
-    name   = "name"
+    name   = "naowner-alias"
     values = ["RHEL-9-DevOps-Practice"]
   }
 }
