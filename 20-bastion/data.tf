@@ -7,7 +7,7 @@ data "aws_ami" "ami" {
   }
 
    filter {
-    name   = "owner-alias"
-    values = ["RHEL-9-DevOps-Practice"]
+    name   = "image-id"
+    values = ["ami-09c813fb71547fc4f"]
   }
 }
