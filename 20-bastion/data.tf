@@ -7,12 +7,12 @@ data "aws_ami" "ami" {
   }
 
   filter {
-    name   = "Virtualization"
+    name   = "Virtualization-type"
     values = ["hvm"]
   }
 
   filter {
-    name   = "Root device type"
+    name   = "root-device-type"
     values = ["ebs"]
   }
 }
