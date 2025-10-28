@@ -1,3 +1,3 @@
 output "ami_id" {
-    value = aws_ami.ami.id
+    value = data.aws_ami.ami.id
 }
