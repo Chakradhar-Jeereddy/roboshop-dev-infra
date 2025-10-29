@@ -15,7 +15,9 @@ variable "sg_name" {
         #frontend
         "frontend",
         #bastion
-        "bastion"
+        "bastion",
+        #frontend-ALB
+        "frontend-alb"
     ]
 }
 

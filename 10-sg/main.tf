@@ -17,3 +17,12 @@ module "sg" {
   sg_description = var.sg_description
   vpc_id = data.aws_ssm_parameter.vpc_id.value
 }
+
+# Frontend accepting traffic from frontend ALB
+resource "aws_security_group_rule" "alb_to_frontend" {
+  security_group_id = module.sg[9].sg_id # frontend security group
+  source_security_group_id = module.sg[11].sg_id # ALB security group
+  from_port = 80
+  ip_protocol = "tcp"
+  to_port = 80
+}
