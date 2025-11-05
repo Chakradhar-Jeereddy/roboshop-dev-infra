@@ -1,4 +1,4 @@
-resource "aws_lb" "backend_alb" {
+/* resource "aws_lb" "backend_alb" {
   name               = "${local.common_name_suffix}-backend-alb" #roboshop-dev-backend-alb
   internal           = true
   load_balancer_type = "application"
@@ -13,7 +13,7 @@ resource "aws_lb" "backend_alb" {
           Name = "${local.common_name_suffix}-backend-alb"
          }
   )
-}
+} */
 
 /* resource "aws_lb_listener" "backend_alb" {
   load_balancer_arn = aws_lb.backend_alb.arn
