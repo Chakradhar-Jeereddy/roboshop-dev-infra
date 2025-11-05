@@ -5,7 +5,7 @@ resource "aws_lb" "backend_alb" {
   security_groups    = [local.backend_alb_sg_id]
   subnets            = local.public_subnet_id
 
-  enable_deletion_protection = true #Prevents accidential deletions from UI
+  # enable_deletion_protection = true #Prevents accidential deletions from UI
 
   tags = merge(
          local.common_tags,
@@ -15,7 +15,7 @@ resource "aws_lb" "backend_alb" {
   )
 }
 
-resource "aws_lb_listener" "backend_alb" {
+/* resource "aws_lb_listener" "backend_alb" {
   load_balancer_arn = aws_lb.backend_alb.arn
   port              = "80"
   protocol          = "HTTP"
@@ -29,4 +29,4 @@ resource "aws_lb_listener" "backend_alb" {
       status_code  = "200"
     }
   }
-}
+} */
