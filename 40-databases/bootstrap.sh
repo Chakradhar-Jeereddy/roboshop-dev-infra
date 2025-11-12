@@ -2,8 +2,6 @@
 component=$1
 environment=$2
 dnf install ansible -y
-pip install boto3 botocore
-pip3 install boto3 botocore
 #ansible-pull -U https://github.com/Chakradhar-Jeereddy/ansible-roboshop-roles-tf.git -e component=$component main.yaml
 REPO_URL=https://github.com/Chakradhar-Jeereddy/ansible-roboshop-roles-tf.git
 REPO_DIR=/opt/roboshop/ansible
