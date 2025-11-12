@@ -42,7 +42,7 @@ resource "aws_instance" "redis" {
     ami = local.ami_id
     subnet_id = local.database_subnet_id
     instance_type = "t3.micro"
-    vpc_security_group_ids = [local.mongodb_sg_id]
+    vpc_security_group_ids = [local.redis_sg_id]
     tags = merge(
        local.common_tags,
        {
@@ -63,7 +63,7 @@ connection {
     host = aws_instance.redis.private_ip
 }
 
-# terrafrom copy this file to mongodb server
+# terrafrom copy this file to redis server
 provisioner "file" {
     source      = "bootstrap.sh"
     destination = "/tmp/bootstrap.sh"
@@ -73,6 +73,45 @@ provisioner "file" {
     inline = [
         "chmod +x /tmp/bootstrap.sh",
         "sudo sh /tmp/bootstrap.sh redis"
+    ]
+  }
+}
+
+resource "aws_instance" "rabitmq" {
+    ami = local.ami_id
+    subnet_id = local.database_subnet_id
+    instance_type = "t3.micro"
+    vpc_security_group_ids = [local.rabitmq_sg_id]
+    tags = merge(
+       local.common_tags,
+       {
+         Name = "${local.common_name_suffix}-rabitmq" #roboshop-dev-rabitmq
+       }
+    )
+}
+
+resource "terraform_data" "rabitmq" {
+  triggers_replace = [
+    aws_instance.rabitmq.id
+  ]
+
+connection {
+    type = "ssh"
+    user = "ec2-user"
+    password = "DevOps321"
+    host = aws_instance.rabitmq.private_ip
+}
+
+# terrafrom copy this file to rabitmq server
+provisioner "file" {
+    source      = "bootstrap.sh"
+    destination = "/tmp/bootstrap.sh"
+}
+
+  provisioner "remote-exec" {
+    inline = [
+        "chmod +x /tmp/bootstrap.sh",
+        "sudo sh /tmp/bootstrap.sh rabitmq"
     ]
   }
 }

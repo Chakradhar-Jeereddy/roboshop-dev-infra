@@ -5,4 +5,5 @@ locals {
     bastion_sg_id = data.aws_ssm_parameter.bastion_sg_id.value
     mongodb_sg_id= data.aws_ssm_parameter.mongodb_sg_id.value
     redis_sg_id= data.aws_ssm_parameter.redis_sg_id.value
+    rabitmq_sg_id= data.aws_ssm_parameter.rabitmq_sg_id.value
 }

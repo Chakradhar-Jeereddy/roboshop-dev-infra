@@ -48,10 +48,20 @@ resource "aws_security_group_rule" "mongodb_bastion" {
   to_port           = 22
 }
 
-#Rule for mangodb accepting bastion
+#Rule for redis accepting bastion
 resource "aws_security_group_rule" "redis_bastion" {
   type              = "ingress"
   security_group_id = local.redis_sg_id
+  source_security_group_id = local.bastion_sg_id
+  from_port         = 22
+  protocol          = "tcp"
+  to_port           = 22
+}
+
+#Rule for rabitmq accepting bastion
+resource "aws_security_group_rule" "rabitmq_bastion" {
+  type              = "ingress"
+  security_group_id = local.rabitmq_sg_id
   source_security_group_id = local.bastion_sg_id
   from_port         = 22
   protocol          = "tcp"
