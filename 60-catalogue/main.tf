@@ -40,3 +40,16 @@ provisioner "file" {
     ]
   }
 }
+
+resource "aws_ec2_instance_state" "catalogue" {
+  instance_id = aws_instance.catalogue.id
+  state       = "stopped"
+  force       = false # Set to true for a forced stop (use with caution)
+  depends_on = [ terraform_data.catalogue ]
+}
+
+resource "aws_ami_from_instance" "catalogue" {
+  name               = "${local.common_name_suffix}-catalogue-ami"
+  source_instance_id = aws_instance.catalogue.id
+  depends_on = [ aws_ec2_instance_state.catalogue ]
+}
