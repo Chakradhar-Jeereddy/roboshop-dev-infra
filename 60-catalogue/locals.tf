@@ -4,7 +4,7 @@ locals {
     private_subnet_id = split(",",data.aws_ssm_parameter.private_subnet_id.value)[0]
     private_subnet_ids = split(",",data.aws_ssm_parameter.private_subnet_id.value)
     ami_id = data.aws_ami.ami.id
-    vpc_id = data.aws_ssm_parameter.vpc_id
+    vpc_id = data.aws_ssm_parameter.vpc_id.value
     common_tags = {
         Project = var.project_name
         Environment = var.environment
