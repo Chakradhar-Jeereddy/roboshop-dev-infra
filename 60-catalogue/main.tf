@@ -1,3 +1,4 @@
+# Create EC2 Instance
 resource "aws_instance" "catalogue" {
     ami = local.ami_id
     subnet_id = local.private_subnet_id
