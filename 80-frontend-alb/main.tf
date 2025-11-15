@@ -9,8 +9,7 @@ resource "aws_lb" "frontend_alb" {
   security_groups    = [local.frontend_alb_sg_id]
   subnets            = local.public_subnet_ids
 
-  #enable_deletion_protection = false #Prevents accidential deletions from UI
-
+  enable_deletion_protection = false #Prevents accidential deletions from UI
   tags = merge(
          local.common_tags,
          {
@@ -38,10 +37,9 @@ resource "aws_lb_listener" "frontend_alb" {
 
 resource "aws_route53_record" "frontend_alb" {
   zone_id = var.zone_id
-  name    = "*roboshop-${var.environment}.${var.domain_name}" #roboshop.dev.chakra86.shop
+  name    = "roboshop-${var.environment}.${var.domain_name}" #roboshop.dev.chakra86.shop
   type    = "A"
   allow_overwrite = true
-
   alias {
     #These are alb details not our domain details
     name                   = aws_lb.frontend_alb.dns_name
