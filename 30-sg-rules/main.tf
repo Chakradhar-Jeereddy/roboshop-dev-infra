@@ -107,3 +107,12 @@ resource "aws_security_group_rule" "catalogue_backen-alb" {
   protocol          = "tcp"
   to_port           = 8080
 }
+
+/* resource "aws_security_group_rule" "frontend-alb_backen-alb" {
+  type              = "ingress"
+  security_group_id = local.frontend_alb_sg_id
+  source_security_group_id = local.
+  from_port         = 443
+  protocol          = "tcp"
+  to_port           = 443
+} */
