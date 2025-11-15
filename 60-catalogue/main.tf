@@ -61,6 +61,7 @@ resource "aws_ami_from_instance" "catalogue" {
 
 }
 
+
 resource "aws_lb_target_group" "catalogue" {
   name     = "${local.common_name_suffix}-catalogue"
   port     = 8080
@@ -174,5 +175,15 @@ resource "aws_lb_listener_rule" "catalogue" {
     host_header {
       values = ["catalogue.backend-alb-${var.environment}.${var.domain_name}"]
     }
+  }
+}
+
+resource "terraform_data" "catalogue_local" {
+  triggers_replace = [
+    aws_instance.catalogue.id
+  ]
+depends_on = [ aws_autoscaling_group.catalogue ]
+provisioner "local-exec" {
+    command = "aws ec2 terminate-instances --instance-ids ${aws_instance.catalogue.id}"
   }
 }
