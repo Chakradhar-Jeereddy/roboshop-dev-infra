@@ -85,6 +85,7 @@ resource "aws_launch_template" "catalogue" {
   instance_type = "t3.micro"
   instance_initiated_shutdown_behavior = "terminate"
   vpc_security_group_ids = [local.catalogue_sg_id]
+  update_default_version = true
   # tags attached to the instance
   tag_specifications {
     resource_type = "instance"
