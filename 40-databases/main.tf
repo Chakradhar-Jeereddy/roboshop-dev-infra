@@ -1,3 +1,7 @@
+# Automate the creation of databses (mongodb, redis, rabitmq and mysql)
+# Use terraform_data block, connection block,prvisioner (file, remote exec) to configure DBs
+# Create route53 A type records for the databases.
+
 resource "aws_instance" "mongodb" {
     ami = local.ami_id
     subnet_id = local.database_subnet_id

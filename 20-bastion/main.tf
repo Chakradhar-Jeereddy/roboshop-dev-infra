@@ -1,3 +1,4 @@
+# Create instance in public network to connect databases and configure them remotely.
 resource "aws_instance" "terraform" {
     ami = local.ami_id
     subnet_id = local.public_subnet_id

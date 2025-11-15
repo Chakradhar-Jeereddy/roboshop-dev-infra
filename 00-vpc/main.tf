@@ -1,3 +1,4 @@
+# Use VPC module to create VPC, subnet
 module "vpc" {
     # source = "../modules"
     source = "git::https://github.com/Chakradhar-Jeereddy/IaC.git//roboshop/modules"

@@ -1,3 +1,4 @@
+# Create AWS security group rules for each component.
 #Rule for frontend accepting frontend alb
 resource "aws_security_group_rule" "frontend_frontend_alb" {
   type              = "ingress"

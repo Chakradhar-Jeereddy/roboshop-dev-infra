@@ -8,6 +8,7 @@
   vpc_id      = data.aws_ssm_parameter.vpc_id.value
 } */
 
+# Create security group using the module custom-sg for each component
 module "sg" {
   count = length(var.sg_name)
   source = "git::https://github.com/Chakradhar-Jeereddy/roboshop-dev-infra.git//custom-sg"

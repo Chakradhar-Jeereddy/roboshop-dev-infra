@@ -1,3 +1,7 @@
+# Create backend application load balancer
+# Create alb listener
+# Create route53 recrod for ALB and alias
+
 resource "aws_lb" "backend_alb" {
   name               = "${local.common_name_suffix}-backend-alb" #roboshop-dev-backend-alb
   internal           = true
@@ -14,7 +18,6 @@ resource "aws_lb" "backend_alb" {
          }
   )
 }
-
 resource "aws_lb_listener" "backend_alb" {
   load_balancer_arn = aws_lb.backend_alb.arn
   port              = "80"
