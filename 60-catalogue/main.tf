@@ -1,3 +1,19 @@
+# Automation for building application infrastructure.
+# Create instance
+# Configure instance
+# Stop instance
+# Create AMI from the instance
+# Create target group
+# Create launch template
+# Create autoscaling group
+# Create autoscaling policy
+# Add instance refresh autoscaling group when triggers = ["launch_template"]
+# Add listener rule
+# Delete instance
+# For template to take new version of AMI at each build
+# For autoscaling group to create instances in rolling fashion if template change
+# update_default_version = true
+
 # Create EC2 Instance
 resource "aws_instance" "catalogue" {
     ami = local.ami_id
@@ -127,6 +143,10 @@ resource "aws_autoscaling_group" "catalogue" {
   force_delete              = false
   vpc_zone_identifier       = local.private_subnet_ids
   target_group_arns = [ aws_lb_target_group.catalogue.arn ]
+  #First it will create one new instance with new launch template vesion
+  #Once the new one is up, it will delete the old one. No downtime, but
+  #But at some point two applications of same versions are running.
+  #It is better to announce downtime and run terraform apply.
   instance_refresh {
     strategy = "Rolling"
     preferences {
