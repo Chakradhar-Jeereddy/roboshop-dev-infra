@@ -1,5 +1,6 @@
-# Create frontend application load balancer
-# Create alb listener
+# Create frontend application load balancer with internal=false
+# Create alb listener and add ssl_policy and certificate and with fixed reponse
+# Certificate is added to listener and will be used by ALB
 # Create route53 recrod for ALB and alias
 
 resource "aws_lb" "frontend_alb" {

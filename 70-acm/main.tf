@@ -1,3 +1,6 @@
+# When certificate is issued by AWS from ACM service
+# It will create a cname and asks to added to your domain for validation.
+# Once the cname record is added in the domain, it will validate the certificate
 # Create cretificate and choose validation method as DNS
 resource "aws_acm_certificate" "roboshop" {
   domain_name       = "*.${var.domain_name}"
