@@ -30,7 +30,7 @@ resource "aws_lb_listener" "frontend_alb" {
 
     fixed_response {
       content_type = "text/plain"
-      message_body = "Hi, I am from frontend ALB HTTP"
+      message_body = "<h1>Hi, I am from frontend ALB HTTP</h1>"
       status_code  = "200"
     }
   }
@@ -38,8 +38,9 @@ resource "aws_lb_listener" "frontend_alb" {
 
 resource "aws_route53_record" "frontend_alb" {
   zone_id = var.zone_id
-  name    = "*.roboshop-${var.environment}.${var.domain_name}" #roboshop.dev.chakra86.shop
+  name    = "*roboshop-${var.environment}.${var.domain_name}" #roboshop.dev.chakra86.shop
   type    = "A"
+  allow_overwrite = true
 
   alias {
     #These are alb details not our domain details
