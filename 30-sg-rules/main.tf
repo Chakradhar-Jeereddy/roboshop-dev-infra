@@ -59,6 +59,67 @@ resource "aws_security_group_rule" "redis_bastion" {
   to_port           = 22
 }
 
+#Rule for rabitmq accepting bastion
+resource "aws_security_group_rule" "rabitmq_bastion" {
+  type              = "ingress"
+  security_group_id = local.rabitmq_sg_id
+  source_security_group_id = local.bastion_sg_id
+  from_port         = 22
+  protocol          = "tcp"
+  to_port           = 22
+}
+
+
+#Rule for mysql accepting bastion
+resource "aws_security_group_rule" "mysql_bastion" {
+  type              = "ingress"
+  security_group_id = local.mysql_sg_id
+  source_security_group_id = local.bastion_sg_id
+  from_port         = 22
+  protocol          = "tcp"
+  to_port           = 22
+}
+
+#Rule for catalogue accepting bastion
+resource "aws_security_group_rule" "catalogue_bastion" {
+  type              = "ingress"
+  security_group_id = local.catalogue_sg_id
+  source_security_group_id = local.bastion_sg_id
+  from_port         = 22
+  protocol          = "tcp"
+  to_port           = 22
+}
+
+#Rule for user accepting bastion
+resource "aws_security_group_rule" "user_bastion" {
+  type              = "ingress"
+  security_group_id = local.user_sg_id
+  source_security_group_id = local.bastion_sg_id
+  from_port         = 22
+  protocol          = "tcp"
+  to_port           = 22
+}
+
+#Rule for cart accepting bastion
+resource "aws_security_group_rule" "cart_bastion" {
+  type              = "ingress"
+  security_group_id = local.cart_sg_id
+  source_security_group_id = local.bastion_sg_id
+  from_port         = 22
+  protocol          = "tcp"
+  to_port           = 22
+}
+
+#Rule for shipping accepting bastion
+resource "aws_security_group_rule" "shipping_bastion" {
+  type              = "ingress"
+  security_group_id = local.shipping_sg_id
+  source_security_group_id = local.bastion_sg_id
+  from_port         = 22
+  protocol          = "tcp"
+  to_port           = 22
+}
+
 #Rule for redis accepting user
 resource "aws_security_group_rule" "redis_user" {
   type              = "ingress"
@@ -79,17 +140,6 @@ resource "aws_security_group_rule" "redis_cart" {
   to_port           = 6379
 }
 
-
-#Rule for rabitmq accepting bastion
-resource "aws_security_group_rule" "rabitmq_bastion" {
-  type              = "ingress"
-  security_group_id = local.rabitmq_sg_id
-  source_security_group_id = local.bastion_sg_id
-  from_port         = 22
-  protocol          = "tcp"
-  to_port           = 22
-}
-
 #Rule for rabitmq accepting payment
 resource "aws_security_group_rule" "rabitmq_payment" {
   type              = "ingress"
@@ -100,16 +150,6 @@ resource "aws_security_group_rule" "rabitmq_payment" {
   to_port           = 5672
 }
 
-#Rule for mysql accepting bastion
-resource "aws_security_group_rule" "mysql_bastion" {
-  type              = "ingress"
-  security_group_id = local.mysql_sg_id
-  source_security_group_id = local.bastion_sg_id
-  from_port         = 22
-  protocol          = "tcp"
-  to_port           = 22
-}
-
 #Rule for mysql accepting shipping
 resource "aws_security_group_rule" "mysql_shipping" {
   type              = "ingress"
@@ -118,16 +158,6 @@ resource "aws_security_group_rule" "mysql_shipping" {
   from_port         = 3306
   protocol          = "tcp"
   to_port           = 3306
-}
-
-#Rule for catalogue accepting bastion
-resource "aws_security_group_rule" "catalogue_bastion" {
-  type              = "ingress"
-  security_group_id = local.catalogue_sg_id
-  source_security_group_id = local.bastion_sg_id
-  from_port         = 22
-  protocol          = "tcp"
-  to_port           = 22
 }
 
 #Rule for mongodb accepting catalog
