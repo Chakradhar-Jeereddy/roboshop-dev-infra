@@ -205,3 +205,38 @@ resource "aws_security_group_rule" "frontend-alb_public" {
   to_port           = 443
 } 
 
+resource "aws_security_group_rule" "catalogue-cart" {
+  type              = "ingress"
+  security_group_id = local.catalogue_sg_id
+  source_security_group_id = local.cart_sg_id
+  from_port         = 8080
+  protocol          = "tcp"
+  to_port           = 8080
+} 
+
+resource "aws_security_group_rule" "cart-shipping" {
+  type              = "ingress"
+  security_group_id = local.cart_sg_id
+  source_security_group_id = local.shipping_sg_id
+  from_port         = 8080
+  protocol          = "tcp"
+  to_port           = 8080
+} 
+
+resource "aws_security_group_rule" "cart-payment" {
+  type              = "ingress"
+  security_group_id = local.cart_sg_id
+  source_security_group_id = local.payment_sg_id
+  from_port         = 8080
+  protocol          = "tcp"
+  to_port           = 8080
+} 
+
+resource "aws_security_group_rule" "user-payment" {
+  type              = "ingress"
+  security_group_id = local.user_sg_id
+  source_security_group_id = local.payment_sg_id
+  from_port         = 8080
+  protocol          = "tcp"
+  to_port           = 8080
+} 
