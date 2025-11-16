@@ -120,6 +120,23 @@ resource "aws_security_group_rule" "shipping_bastion" {
   to_port           = 22
 }
 
+resource "aws_security_group_rule" "payment_bastion" {
+  type              = "ingress"
+  security_group_id = local.payment_sg_id
+  source_security_group_id = local.bastion_sg_id
+  from_port         = 22
+  protocol          = "tcp"
+  to_port           = 22
+}
+
+resource "aws_security_group_rule" "frontend_bastion" {
+  type              = "ingress"
+  security_group_id = local.frontend_sg_id
+  source_security_group_id = local.bastion_sg_id
+  from_port         = 22
+  protocol          = "tcp"
+  to_port           = 22
+}
 #Rule for redis accepting user
 resource "aws_security_group_rule" "redis_user" {
   type              = "ingress"
