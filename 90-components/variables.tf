@@ -8,8 +8,8 @@ variable "rule_priority" {
 variable "components" {
     type = map
     default = {
-        rule_shipping = {
-            priority = 40
+        shipping = {
+            rule_priority = 40
         }
         catalogue = {
             rule_priority = 10
