@@ -8,7 +8,7 @@ variable "rule_priority" {
 variable "components" {
     type = map
     default = {
-        shipping = {
+/*         shipping = {
             rule_priority = 40
         }
         catalogue = {
@@ -19,11 +19,11 @@ variable "components" {
         }
         payment = {
             rule_priority = 50
-        }
-/*         user = {
+        } */
+        user = {
             rule_priority = 20
         }
-        frontend = {
+/*         frontend = {
             rule_priority = 10
         }  */
     }
