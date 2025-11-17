@@ -1,9 +1,9 @@
-variable "component" {
+/* variable "component" {
   default = "catalogue"
 }
 variable "rule_priority" {
     default = 10
-}
+} */
 
 variable "components" {
     type = map
@@ -20,11 +20,11 @@ variable "components" {
         payment = {
             rule_priority = 50
         }
-        user = {
+/*         user = {
             rule_priority = 20
         }
         frontend = {
             rule_priority = 10
-        }
+        } */
     }
 }
