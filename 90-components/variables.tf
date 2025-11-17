@@ -5,7 +5,7 @@ variable "rule_priority" {
     default = 10
 }
 
-/* variable "components" {
+variable "components" {
     type = map
     default = {
         shipping = {
@@ -27,4 +27,4 @@ variable "rule_priority" {
             rule_priority = 10
         } 
     }
-} */
+}
