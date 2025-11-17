@@ -20,11 +20,11 @@ variable "components" {
         payment = {
             rule_priority = 50
         }
-/*         user = {
+        user = {
             rule_priority = 20
         }
         frontend = {
             rule_priority = 10
-        } */
+        } 
     }
 }
