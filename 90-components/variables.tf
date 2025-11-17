@@ -1,14 +1,14 @@
-/* variable "component" {
-  default = "catalogue"
+variable "component" {
+  default = "frontend"
 }
 variable "rule_priority" {
     default = 10
-} */
+}
 
-variable "components" {
+/* variable "components" {
     type = map
     default = {
-/*         shipping = {
+        shipping = {
             rule_priority = 40
         }
         catalogue = {
@@ -19,12 +19,12 @@ variable "components" {
         }
         payment = {
             rule_priority = 50
-        } */
+        }
         user = {
             rule_priority = 20
         }
-/*         frontend = {
+        frontend = {
             rule_priority = 10
-        }  */
+        } 
     }
-}
+} */
