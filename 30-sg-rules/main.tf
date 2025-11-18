@@ -281,6 +281,14 @@ resource "aws_security_group_rule" "backend_alb_payment" {
   to_port           = 80
 }
 
+resource "aws_security_group_rule" "backend_alb_cart" {
+  type              = "ingress"
+  security_group_id = local.backend_alb_sg_id
+  source_security_group_id = local.cart_sg_id
+  from_port         = 80
+  protocol          = "tcp"
+  to_port           = 80
+}
 # This is a mistake we did, cart can't access catalogue directly, it should be through backend alb
 /* resource "aws_security_group_rule" "cart-shipping" {
   type              = "ingress"
