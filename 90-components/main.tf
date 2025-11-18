@@ -2,7 +2,7 @@
     for_each = var.components
     source = "../../terraform-roboshop-component"
     component = var.component
-    rule_priority = 10
+    rule_priority = 20
 } */
 
 module "components" {
