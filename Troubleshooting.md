@@ -33,7 +33,7 @@ Issue - While upgrading application in one VM it is successfully upgraded by ter
 2. While installing python3-devel make sure openssl other packages also upgraded.
 3. added below to fix the issue
 
-# changed this as part of latest python3-devel from repos have upgraded openssl-libs but other openssl packages are old in AMI, so mismatch occured. we are upgrading before installing python or after
+changed this as part of latest python3-devel from repos have upgraded openssl-libs but other openssl packages are old in AMI, so mismatch occured. we are upgrading before installing python or after
 - name: upgrade openssl packages
   ansible.builtin.dnf:
     name: "{{ item }}"
